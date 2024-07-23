@@ -24,375 +24,140 @@
 
 <body>
 	<div class="container-scroller d-flex">
-<div class="row p-0 m-0 proBanner" id="proBanner">
-		<div class="col-md-12 p-0 m-0">
-			<div class="card-body card-body-padding d-flex align-items-center justify-content-between">
-				<div class="ps-lg-1">
-					<div class="d-flex align-items-center justify-content-between">
-						<p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates,
-							and more with this template!</p>
-						<a href="https://www.bootstrapdash.com/product/spica-admin/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo"
-							target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
+		<div class="row p-0 m-0 proBanner" id="proBanner">
+			<div class="col-md-12 p-0 m-0">
+				<div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+					<div class="ps-lg-1">
+						<div class="d-flex align-items-center justify-content-between">
+							<p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates,
+								and more with this template!</p>
+							<a href="https://www.bootstrapdash.com/product/spica-admin/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo"
+								target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
+						</div>
 					</div>
-				</div>
-				<div class="d-flex align-items-center justify-content-between">
-					<a href="https://www.bootstrapdash.com/product/spica-admin/"><i
-							class="mdi mdi-home me-3 text-white"></i></a>
-					<button id="bannerClose" class="btn border-0 p-0">
-						<i class="mdi mdi-close text-white mr-0"></i>
-					</button>
+					<div class="d-flex align-items-center justify-content-between">
+						<a href="https://www.bootstrapdash.com/product/spica-admin/"><i
+								class="mdi mdi-home me-3 text-white"></i></a>
+						<button id="bannerClose" class="btn border-0 p-0">
+							<i class="mdi mdi-close text-white mr-0"></i>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 		<!-- partial -->
-		<nav th:insert="~{fragments/sidebar :: block-sidebar}"  class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+		<nav th:insert="~{fragments/sidebar :: block-sidebar}" class="sidebar sidebar-offcanvas" id="sidebar"></nav>
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
 			<div th:insert="~{fragments/navbar :: block-navbar}" class="navbar-custom"></div>
 
 			<div class="main-panel">
 				<div class="content-wrapper">
-					<div class="row">
-						<div class="col-12 col-xl-6 grid-margin stretch-card">
-							<div class="row w-100 flex-grow">
-								<div class="col-md-12 grid-margin stretch-card">
-									<div class="card">
-										<div class="card-body">
-											<p class="card-title">Website Audience Metrics</p>
-											<p class="text-muted">25% more traffic than previous week</p>
-											<div class="row mb-3">
-												<div class="col-md-7">
-													<div class="d-flex justify-content-between traffic-status">
-														<div class="item">
-															<p class="mb-">Users</p>
-															<h5 class="font-weight-bold mb-0">93,956</h5>
-															<div class="color-border"></div>
-														</div>
-														<div class="item">
-															<p class="mb-">Bounce Rate</p>
-															<h5 class="font-weight-bold mb-0">58,605</h5>
-															<div class="color-border"></div>
-														</div>
-														<div class="item">
-															<p class="mb-">Page Views</p>
-															<h5 class="font-weight-bold mb-0">78,254</h5>
-															<div class="color-border"></div>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-5">
-													<ul class="nav nav-pills nav-pills-custom justify-content-md-end"
-														id="pills-tab-custom" role="tablist">
-														<li class="nav-item">
-															<a class="nav-link active" id="pills-home-tab-custom"
-																data-toggle="pill" href="#pills-health" role="tab"
-																aria-controls="pills-home" aria-selected="true">
-																Day
-															</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" id="pills-profile-tab-custom"
-																data-toggle="pill" href="#pills-career" role="tab"
-																aria-controls="pills-profile" aria-selected="false">
-																Week
-															</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" id="pills-contact-tab-custom"
-																data-toggle="pill" href="#pills-music" role="tab"
-																aria-controls="pills-contact" aria-selected="false">
-																Month
-															</a>
-														</li>
-													</ul>
-												</div>
-											</div>
-											<canvas id="audience-chart"></canvas>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 stretch-card">
-									<div class="card">
-										<div class="card-body">
-											<div class="d-flex align-items-center justify-content-between flex-wrap">
-												<p class="card-title">Weekly Balance</p>
-												<p class="text-success font-weight-medium">20.15 %</p>
-											</div>
-											<div class="d-flex align-items-center flex-wrap mb-3">
-												<h5 class="font-weight-normal mb-0 mb-md-1 mb-lg-0 me-3">$22.736</h5>
-												<p class="text-muted mb-0">Avg Sessions</p>
-											</div>
-											<canvas id="balance-chart" height="130"></canvas>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 stretch-card">
-									<div class="card">
-										<div class="card-body">
-											<div class="d-flex align-items-center justify-content-between flex-wrap">
-												<p class="card-title">Today Task</p>
-												<p class="text-success font-weight-medium">45.39 %</p>
-											</div>
-											<div class="d-flex align-items-center flex-wrap mb-3">
-												<h5 class="font-weight-normal mb-0 mb-md-1 mb-lg-0 me-3">17.247</h5>
-												<p class="text-muted mb-0">Avg Sessions</p>
-											</div>
-											<canvas id="task-chart" height="130"></canvas>
-										</div>
-									</div>
-								</div>
+
+					<div class="row align-items-center">
+						<div class="col-md-6">
+							<div class="mb-3">
+								<h5 class="card-title">Thêm danh mục <span class="text-muted fw-normal ms-2">(834)</span>
+								</h5>
 							</div>
 						</div>
-						<div class="col-12 col-xl-6 grid-margin stretch-card">
-							<div class="row w-100 flex-grow">
-								<div class="col-md-6 grid-margin stretch-card">
-									<div class="card">
-										<div class="card-body">
-											<p class="card-title">Regional Load</p>
-											<p class="text-muted">Last update: 2 Hours ago</p>
-											<div class="regional-chart-legend d-flex align-items-center flex-wrap mb-1"
-												id="regional-chart-legend"></div>
-											<canvas height="280" id="regional-chart"></canvas>
-										</div>
-									</div>
+						<div class="col-md-6">
+							<!-- Alert -->
+							<div th:if="${message != null && message.status == 'success'}" id="message"
+								class="m-auto w-50 px-4 py-2 rounded-3 text-white" style="background-color: #0BCE97">
+								<span th:text="${message.message}"></span>
+							</div>
+							<div th:if="${message != null && message.status == 'fail'}" id="fail"
+								class="m-auto w-50 px-4 py-2 rounded-3 text-white" style="background-color: #FF0000">
+								<span th:text="${message.message}"></span>
+							</div>
+							<!-- End alert -->
+							<div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+								<div>
+									<!-- <ul class="nav nav-pills">
+                        <li class="nav-item">
+                        <a aria-current="page" href="#" class="router-link-active router-link-exact-active nav-link active" data-bs-toggle="tooltip" data-bs-placement="top" title data-bs-original-title="List" aria-label="List">
+                        <i class="bx bx-list-ul"></i>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title data-bs-original-title="Grid" aria-label="Grid"><i class="bx bx-grid-alt"></i></a>
+                        </li>
+                        </ul> -->
 								</div>
-								<div class="col-md-6 grid-margin stretch-card">
-									<div class="card">
-										<div class="card-body pb-0">
-											<div class="d-flex align-items-center mb-4">
-												<p class="card-title mb-0 me-1">Today activity</p>
-												<div class="badge badge-info badge-pill">2</div>
-											</div>
-											<div class="d-flex flex-wrap pt-2">
-												<div class="me-4 mb-lg-2 mb-xl-0">
-													<p>Time On Site</p>
-													<h4 class="font-weight-bold mb-0">77.15 %</h4>
-												</div>
-												<div>
-													<p>Page Views</p>
-													<h4 class="font-weight-bold mb-0">14.15 %</h4>
-												</div>
-											</div>
-										</div>
-										<canvas height="150" id="activity-chart"></canvas>
-									</div>
+								<div>
+									<a th:href="@{categorys/add}" data-bs-toggle="" data-bs-target=".add-new"
+										class="btn btn-primary"><i class="bx bx-plus me-1"></i> Add New</a>
 								</div>
-								<div class="col-md-12 stretch-card">
-									<div class="card">
-										<div class="card-body pb-0">
-											<p class="card-title">Server Status 247</p>
-											<div class="d-flex justify-content-between flex-wrap">
-												<p class="text-muted">Last update: 2 Hours ago</p>
-												<div
-													class="d-flex align-items-center flex-wrap server-status-legend mt-3 mb-3 mb-md-0">
-													<div class="item me-3">
-														<div class="d-flex align-items-center">
-															<div class="color-bullet"></div>
-															<h5 class="font-weight-bold mb-0">128GB</h5>
-														</div>
-														<p class="mb-">Total Usage</p>
-													</div>
-													<div class="item me-3">
-														<div class="d-flex align-items-center">
-															<div class="color-bullet"></div>
-															<h5 class="font-weight-bold mb-0">92%</h5>
-														</div>
-														<p class="mb-">Memory Usage</p>
-													</div>
-													<div class="item me-3">
-														<div class="d-flex align-items-center">
-															<div class="color-bullet"></div>
-															<h5 class="font-weight-bold mb-0">16%</h5>
-														</div>
-														<p class="mb-">Disk Usage</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<canvas height="170" id="status-chart"></canvas>
-									</div>
+								<div class="dropdown">
+									<a class="btn btn-link text-muted py-1 font-size-16 shadow-none dropdown-toggle"
+										href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+											class="bx bx-dots-horizontal-rounded"></i></a>
+									<ul class="dropdown-menu dropdown-menu-end">
+										<li><a class="dropdown-item" href="#">Action</a></li>
+										<li><a class="dropdown-item" href="#">Another action</a></li>
+										<li><a class="dropdown-item" href="#">Something else here</a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-12 grid-margin stretch-card">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Financial management review</h4>
-									<div class="table-responsive">
-										<table class="table table-striped">
-											<thead>
-												<tr>
-													<th>
-														User
-													</th>
-													<th>
-														First name
-													</th>
-													<th>
-														Progress
-													</th>
-													<th>
-														Amount
-													</th>
-													<th>
-														Deadline
-													</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td class="py-1">
-														<img src="images/faces/face1.jpg" alt="image" />
-													</td>
-													<td>
-														Herman Beck
-													</td>
-													<td>
-														<div class="progress">
-															<div class="progress-bar bg-success" role="progressbar"
-																style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-													</td>
-													<td>
-														$ 77.99
-													</td>
-													<td>
-														May 15, 2015
-													</td>
-												</tr>
-												<tr>
-													<td class="py-1">
-														<img src="images/faces/face2.jpg" alt="image" />
-													</td>
-													<td>
-														Messsy Adam
-													</td>
-													<td>
-														<div class="progress">
-															<div class="progress-bar bg-danger" role="progressbar"
-																style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-													</td>
-													<td>
-														$245.30
-													</td>
-													<td>
-														July 1, 2015
-													</td>
-												</tr>
-												<tr>
-													<td class="py-1">
-														<img src="images/faces/face3.jpg" alt="image" />
-													</td>
-													<td>
-														John Richards
-													</td>
-													<td>
-														<div class="progress">
-															<div class="progress-bar bg-warning" role="progressbar"
-																style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-													</td>
-													<td>
-														$138.00
-													</td>
-													<td>
-														Apr 12, 2015
-													</td>
-												</tr>
-												<tr>
-													<td class="py-1">
-														<img src="images/faces/face4.jpg" alt="image" />
-													</td>
-													<td>
-														Peter Meggik
-													</td>
-													<td>
-														<div class="progress">
-															<div class="progress-bar bg-primary" role="progressbar"
-																style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-													</td>
-													<td>
-														$ 77.99
-													</td>
-													<td>
-														May 15, 2015
-													</td>
-												</tr>
-												<tr>
-													<td class="py-1">
-														<img src="images/faces/face5.jpg" alt="image" />
-													</td>
-													<td>
-														Edward
-													</td>
-													<td>
-														<div class="progress">
-															<div class="progress-bar bg-danger" role="progressbar"
-																style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-													</td>
-													<td>
-														$ 160.25
-													</td>
-													<td>
-														May 03, 2015
-													</td>
-												</tr>
-												<tr>
-													<td class="py-1">
-														<img src="images/faces/face6.jpg" alt="image" />
-													</td>
-													<td>
-														John Doe
-													</td>
-													<td>
-														<div class="progress">
-															<div class="progress-bar bg-info" role="progressbar"
-																style="width: 65%" aria-valuenow="65" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-													</td>
-													<td>
-														$ 123.21
-													</td>
-													<td>
-														April 05, 2015
-													</td>
-												</tr>
-												<tr>
-													<td class="py-1">
-														<img src="images/faces/face7.jpg" alt="image" />
-													</td>
-													<td>
-														Henry Tom
-													</td>
-													<td>
-														<div class="progress">
-															<div class="progress-bar bg-warning" role="progressbar"
-																style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-																aria-valuemax="100"></div>
-														</div>
-													</td>
-													<td>
-														$ 150.00
-													</td>
-													<td>
-														June 16, 2015
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+						<div class="col-lg-12">
+							<div class>
+								<div class="table-responsive">
+									<table class="table  project-list-table table-nowrap align-middle table-bordered">
+										<thead class="table-primary">
+											<tr>
+
+												<th>ID</th>
+												<th scope="col">Tên danh mục</th>
+												<th scope="col">Danh mục con</th>
+												<th> </th>
+												<th scope="col">Trạng thái</th>
+												<th scope="col" style="width: 200px;">Action</th>
+											</tr>
+										</thead>
+
+										<tbody>
+
+
+											<tr th:each="category,index : ${categories}">
+
+												<td><span th:text="${index.index + 1}"></span> </td>
+												<td>
+													<span class="text-overflow" id="nameEvent"
+														th:text="${category.name}"></span>
+												</td>
+												<td><span th:text="${category.name}"> </span></td>
+												<td><span th:text="${category.name}"> </span></td>
+												
+												<td>
+													<pan th:text="${category.status}"></pan>
+												</td>
+												<td>
+													<ul class="list-inline mb-0">
+														<li class="list-inline-item">
+															<a th:href="@{categories/{id}(id=${category.id})}"
+																data-bs-toggle="tooltip" data-bs-placement="top"
+																title="Edit" class="px-2 text-primary"><i
+																	class="bx bx-pencil font-size-18"></i></a>
+														</li>
+														<li class="list-inline-item">
+															<a href="javascript:void(0);" data-bs-toggle="tooltip"
+																data-bs-placement="top" title="Delete"
+																class="px-2 text-danger"><i
+																	class="bx bx-trash-alt font-size-18"></i></a>
+														</li>
+
+													</ul>
+												</td>
+											</tr>
+
+
+										</tbody>
+									</table>
+
 								</div>
 							</div>
 						</div>
