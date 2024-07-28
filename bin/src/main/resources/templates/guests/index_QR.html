@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>VKU - Trường Đại học CNTT&TT Việt Hàn</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="shortcut icon" th:href="@{/images/iconlogo.png}" />
+
+	<link type="text/css" rel="stylesheet" th:href="@{/css/guests/style.css}">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<style>
+		@media(max-width:576px) {
+			.b {
+				display: none;
+			}
+		}
+
+		.text-overflow {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 200px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="w-100">
+		<!-- header -->
+		<div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-warning p-0">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="container-fluid w-75">
+					<div class="collapse navbar-collapse mx-5 w-50" id="navbarNav">
+						<ul class="navbar-nav d-flex justify-content-between w-100">
+							<li class="nav-item bg-white py-1">
+								<a class="nav-link text-dark fw-bolder fs-5" aria-current="page" href="#">Thông tin
+									QR</a>
+							</li>
+							<li class="nav-item py-1">
+								<a class="nav-link pointer" href="/logout"><i
+										class="fa-solid fa-right-from-bracket fa-2xl text-dark"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!-- end header -->
+		<!-- body -->
+		<!-- step -->
+
+
+		<form class="container mt-5 w-100" method="post" th:object="${guest}">
+
+			<div class="mt-5">
+				<div class="row w-100 d-flex m-auto position-relative">
+				</div>
+			</div>
+			<!-- end step -->
+			<!-- Alert  -->
+			<div th:if="${message != null && message.status == 'success'}" id="message"
+				class="m-auto w-50 px-4 py-2 rounded-3 text-white" style="background-color:rgb(214 213 80)">
+				<span th:text="${message.message}"></span>
+			</div>
+			<div th:if="${message != null && message.status == 'fail'}" id="fail"
+				class="m-auto w-50 px-4 py-2 rounded-3 text-white" style="background-color: #FF0000">
+				<span th:text="${message.message}"></span>
+			</div>
+
+			<!-- End alert -->
+			<!-- info -->
+			<div class="d-flex justify-content-around flex-wrap">
+				<div class="col-lg-5 col-12">
+					<div class="border-start border-4 py-1 border-warning bg-grey text-center">
+						<h4 class="text-uppercase fw-bolder">2.1 Thông tin khách</h4>
+					</div>
+
+					<div class="d-md-flex justify-content-between mt-2 mx-2">
+						<input type="hidden" th:field="*{id}">
+
+						<div class="row">
+
+							<div class="col-auto">
+								<label class="fw-bolder" for="name">Họ tên</label>
+								<br>
+								<input class="form-control" type="text" name="name" placeholder="Nhập họ tên"
+									th:field="*{name}" required>
+							</div>
+							<div class="col-auto">
+								<label class="fw-bolder" for="phoneNumber">SĐT</label>
+								<br>
+								<input class="form-control" type="text" name="phoneNumber" placeholder="Nhập SĐT"
+									th:field="*{phoneNumber}" required>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="d-md-flex justify-content-between mt-2 mx-2">
+						<div class="row">
+							<div class="col-auto">
+								<label class="fw-bolder" for="organization">Email</label>
+								<br>
+								<input class="form-control" type="text" name="organization"
+									placeholder="Nhập tổ chức/doanh nghiệp" th:field="*{email}" required>
+							</div>
+							<div class="col-auto">
+								<label class="fw-bolder" for="organization">Tổ chức/Doanh nghiệp</label>
+								<br>
+								<input class="form-control" type="text" name="organization"
+									placeholder="Nhập tổ chức/doanh nghiệp" th:field="*{organization}" required>
+							</div>
+						</div>
+					</div>
+					<div class="d-md-flex justify-content-between mt-2 mx-2">
+
+						<div class="row">
+							<div class="col-auto">
+								<label class="fw-bolder" for="htxt">Sự kiện tham gia</label>
+								<br>
+								<th:block>
+									<select class="form-select" name="eventId">
+										<!--
+										<option th:selected="${guest.eventId == null || guest.eventId ==''}"
+											th:text="Khác" value="0"></option>
+											-->
+										<option class="text-overflow" th:each="event : ${events}" th:value="${event.id}"
+											th:text="${event.name}"
+											th:selected="${guest.eventId != null and guest.eventId == event.id.toString()}">
+										</option>
+									</select>
+								</th:block>
+							</div>
+						</div>
+					</div>
+					<!--
+					<div class="d-md-flex justify-content-between mt-2 mx-2">
+						<div class="row">
+							<div class="form-check">
+								<input type="radio" id="eventOther" class="form-check-input" onclick="toggleInput()">
+								<label class="form-check-label fw-bolder" for="eventOther">Sự kiện khác</label>
+							</div>
+							<div class="form-group">
+								<input class="form-control" type="text" id="otherEventInput" name="otherEvent"
+									placeholder="Nhập tên sự kiện khác" th:field="*{otherEvent}" style="display: none;">
+							</div>
+						</div>
+
+					</div>
+					-->
+					<div class="d-md-flex justify-content-between mt-2 mx-2">
+						<div class="row">
+							<div class="col-md-auto">
+								<label class="fw-bolder" for="purpose">Mục đích</label>
+								<br>
+								<input class="form-control" type="text" name="purpose" placeholder="Nhập mục đích"
+									th:field="*{purpose}" required>
+							</div>
+
+						</div>
+					</div>
+					<button id="" class="btn btn-warning px-4 py-3 fs-5 mt-4" type="submit">Thực hiện</button>
+
+				</div>
+				<div class="col-lg-5 col-12">
+					<div class="border-start border-4 py-1 border-warning bg-grey text-center">
+						<h4 class="text-uppercase fw-bolder">2.2 QR_CODE</h4>
+					</div>
+					<th:block th:if="*{QRCodeImage} != null">
+						<div class="d-md-flex justify-content-between mt-2 mx-2">
+							<div class="row">
+								<!--
+								<div class="col-md-4">
+									<div class="form-class align-items-center">
+										<img th:src="@{'data:image/png;base64,' + *{QRCodeImage}}" alt="QR Code">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-class d-flex flex-column align-items-center mt-2">
+										<a th:href="@{'data:image/png;base64,' + *{QRCodeImage}}" download="qrcode.png">
+											<button type="button" class="btn btn-warning">Tải xuống</button>
+										</a>
+									</div>
+								</div>
+							</div>
+								<button id="" clas	s="btn btn-warning px-4 py-3 fs-5 mt-4" type="submit">Thực hiện</button>
+							 -->
+								<div class="form-class d-flex flex-column align-items-center mt-2">
+									<a th:href="@{${path_image} + *{QRCodeImage}}" th:download="qrcode.png">
+										<button type="button" class="btn btn-warning">Tải xuống</button>
+									</a>
+									<img th:src="@{${path_image} + *{QRCodeImage}}" alt="QR Code" />
+								</div>
+							</div>
+						</div>
+					</th:block>
+				</div>
+
+
+			</div>
+			<div class="text-center">
+
+		</form>
+		<!--
+		<div class="px-4 px-md-5 py-4">
+			<div class="border-start border-4 py-1 border-warning bg-grey">
+				<h4 class="text-uppercase fw-bolder mx-3">2.3 Tải hình ảnh minh chứng nhập học trên hệ thống của
+					bộ
+				</h4>
+			</div>
+
+
+		</div>
+		-->
+		<!-- end info -->
+	</div>
+	<!-- end body -->
+	<!-- footer -->
+	<div class="bg-warning border-top border-3 border-danger footer" style="position: fixed; bottom: 0; width: 100%;">
+		<div class="w-75 m-auto d-flex">
+			<div class="col-md-1 m-auto d-none d-xl-block">
+				<img class="" src="/assets/images/logo_icon.png" alt="">
+			</div>
+			<div class="col mx-5 col-12">
+				<span class="fw-bolder">Bản quyền &copy; Trường Đại học Công nghệ Thông tin & Truyền Thông Việt -
+					Hàn, Đại học Đà Nẵng</span> <br>
+				<span>
+					<i class="fa-solid fa-house"></i> Địa chỉ: 470 Trần Đại Nghĩa, quận Ngũ Hành Sơn, Thành phố Đà
+					Nẵng
+				</span>
+				<div class="d-block d-lg-flex">
+					<div class="col-auto">
+						<i class="fa-solid fa-phone"></i> Điện thoại: 0236.6.552.688
+					</div>
+					<div class="col-auto mx-5 mb-3">
+						<i class="fa-solid fa-envelope"></i> Email: tuyensinh@vku.udn.vn
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer-->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+	<script>
+
+	</script>
+	<script>
+
+
+
+
+	</script>
+	<script>
+		window.addEventListener('DOMContentLoaded', function () {
+			var selectElement = document.querySelector('select.form-select');
+			var maxWidth = selectElement.offsetWidth + 'px';
+
+			var optionElements = selectElement.querySelectorAll('option');
+			optionElements.forEach(function (option) {
+				option.style.maxWidth = maxWidth;
+			});
+		});
+	</script>
+	<script>
+		// Hide the message element after 5 seconds
+		setTimeout(function () {
+			var messageElement = document.getElementById('message');
+			if (messageElement) {
+				messageElement.style.display = 'none';
+			}
+		}, 5000);
+	</script>
+</body>
+
+</html>

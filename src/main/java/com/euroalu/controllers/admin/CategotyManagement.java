@@ -29,6 +29,6 @@ public class CategotyManagement {
 			model.addAttribute("message", message);
 			message = null;
 		}
-		return "admin/categories/index"; // Returns the HTML template name
+		return "admin/categories/index2"; // Returns the HTML template name
 	}
 }
