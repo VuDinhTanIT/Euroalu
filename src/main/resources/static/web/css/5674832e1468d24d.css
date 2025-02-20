@@ -106,15 +106,24 @@
 	background: #fff url(/media/ajax-loader.0b80f665.gif) 50% no-repeat
 }
 
-@font-face {
+/*@font-face {
 	font-family: slick;
 	font-weight: 400;
 	font-style: normal;
 	src: url(/media/slick.25572f22.eot);
 	src: url(/media/slick.25572f22.eot?#iefix) format("embedded-opentype"), url(/media/slick.653a4cbb.woff) format("woff"), url(/media/slick.6aa1ee46.ttf) format("truetype"), url(/media/slick.f895cfdf.svg#slick) format("svg")
 }
-
-.slick-next,
+*/
+@font-face {
+    font-family: slick;
+    font-weight: 400;
+    font-style: normal;
+    src: url(@{/web/media/slick.25572f22.eot});
+    src: url(@{/web/media/slick.25572f22.eot?#iefix}) format("embedded-opentype"),
+         url(/web/media/slick.653a4cbb.woff) format("woff"),
+         url(@{/web/media/slick.6aa1ee46.ttf}) format("truetype"),
+         url(@{/web/media/slick.f895cfdf.svg#slick}) format("svg");
+}
 .slick-prev {
 	font-size: 0;
 	line-height: 0;

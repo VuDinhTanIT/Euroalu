@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Euroalu</title>
+
+
+	<link rel="icon" th:src="@{/web/assets/icons/logo.jpg}" />
+	<meta name="next-head-count" content="5" />
+	<!--	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+--> <!--	<link rel="preload" th:href="@{/web/css/fa7cd1257a2d0d42.css}" as="style" />
+-->
+	<!--
+	<script th:src="@{/web/js/jquery-3.7.1.min.js}" defer=""></script>
+	<link rel="stylesheet" th:href="@{/web/css/bootstrap.min.css}"/>
+-->
+	<link rel="stylesheet" th:href="@{/web/css/fa7cd1257a2d0d42.css}" data-n-g="" />
+	<!--	<link rel="preload" th:href="@{/web/css/5674832e1468d24d.css}" as="style" />
+-->
+	<script th:src="@{/web/js/main.js}" defer=""></script>
+
+	<link rel="stylesheet" th:href="@{/web/css/5674832e1468d24d.css}" data-n-p="" />
+	<link rel="stylesheet" th:href="@{/web/css/style.css}" data-n-p="" />
+	<link rel="stylesheet" th:href="@{/web/css/globals.css}" data-n-p="" />
+		<!--<script th:src="@{/web/js/bootstrap.bundle.min.js}" ></script>
+		<script th:src="@{/web/js/bootstrap.min.js}" ></script>-->
+	<style>
+		@media (max-width: 768px) {
+			.nav-menu {
+				display: block;
+			}
+
+			#mobile-menu {
+				display: none;
+			}
+		}
+	</style>
+</head>
+
+<div>
+	<div class="wrapper">
+		<div th:replace="~{user/common/navbar :: navbar}"></div>
+		<div th:replace="~{user/common/slider :: slider}"></div>
+
+		<div class="main">
+		</div>
+		<div layout:fragment="content">
+			<!-- Content goes here -->
+      	</div>
+    <!-- Sử dụng layout:fragment cho footer -->
+		<div>
+			<div class="fb-customerchat" page_id="110681018196507">
+				<div class="contact-icons">
+					<!-- Icon Messenger -->
+					<a href="https://www.facebook.com/vudinhtan20it7" target="_blank">
+						<div class="icon">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg"
+								alt="Messenger">
+						</div>
+					</a>
+					<!-- Icon Zalo -->
+					<a href="https://zalo.me/0988016877" target="_blank">
+						<div class="icon">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo">
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+</div>
+
+</body>
+
+</html>

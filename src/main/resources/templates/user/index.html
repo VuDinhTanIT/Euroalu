@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{layout/layout}">
+<html>
 
 <head>
 	<meta charSet="utf-8" />
@@ -16,6 +15,7 @@
 	<!--	<link rel="preload" th:href="@{/web/css/5674832e1468d24d.css}" as="style" />
 -->
 	<link rel="stylesheet" th:href="@{/web/css/5674832e1468d24d.css}" data-n-p="" />
+	<link rel="stylesheet" th:href="@{/web/css/style.css}" data-n-p="" />
 	<script th:src="@{/web/js/bootstrap.bundle.min.js}" defer=""></script>
 	<noscript data-n-css=""></noscript>
 	<style>
@@ -30,29 +30,43 @@
 			width: 60%;
 			/* Đảm bảo ảnh chiếm toàn bộ chiều rộng */
 		}
-		 .slick-arrow {
-            background-color: rgba(255, 255, 255, 0.8); /* Nền cho nút */
-            border: none;
-            width: 40px; /* Chiều rộng của nút */
-            height: 40px; /* Chiều cao của nút */
-            border-radius: 50%; /* Làm tròn nút */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1; /* Đảm bảo nút nằm trên ảnh */
-        }
-        
-        .slick-prev {
-            left: 30px; /* Khoảng cách từ bên trái */
-        }
-        .slick-next {
-            right: 50px; /* Khoảng cách từ bên phải */
-        }
+
+		.slider2 img {
+			width: 100%;
+			height: 400px;
+		}
+
+		.slick-arrow {
+			background-color: rgba(255, 255, 255, 0.8);
+			/* Nền cho nút */
+			border: none;
+			width: 40px;
+			/* Chiều rộng của nút */
+			height: 40px;
+			/* Chiều cao của nút */
+			border-radius: 50%;
+			/* Làm tròn nút */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1;
+			/* Đảm bảo nút nằm trên ảnh */
+		}
+
+		.slick-prev {
+			left: 30px;
+			/* Khoảng cách từ bên trái */
+		}
+
+		.slick-next {
+			right: 50px;
+			/* Khoảng cách từ bên phải */
+		}
 	</style>
 </head>
 
 <body>
-	<div th:fragment="content"  id="__next" data-reactroot="">
+	<div id="__next" data-reactroot="">
 		<div>
 			<header
 				class=" container mx-auto flex items-center justify-between bg-gradient-to-b from-white to-blue-50 py-2 px-4 md:flex md:items-center md:py-4">
@@ -132,52 +146,23 @@
 							</svg></button></div>
 				</nav>
 			</div>
-		<div class="flex justify-center ">
-			
-		
-			<div class="slider slick-list">
-				<div class="img d-flex align-items-center justify-content-center"><img
-						src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1304&q=80"
-						alt="" style="outline:none;"></div>
-				<div class="img d-flex align-items-center justify-content-center"><img
-						src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
-						alt="" style="outline:none;"></div>
-				<div class="img d-flex align-items-center justify-content-center"><img
-						src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
-						alt="" style="outline:none;"></div>
+			<div class="flex justify-center ">
 
 
+				<div class="slider  slick-list">
+					<div class="img d-flex align-items-center justify-content-center"><img
+							src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1304&q=80"
+							alt="" style="outline:none;"></div>
+					<div class="img d-flex align-items-center justify-content-center"><img
+							src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+							alt="" style="outline:none;"></div>
+					<div class="img d-flex align-items-center justify-content-center"><img
+							src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+							alt="" style="outline:none;"></div>
+				</div>
+				<ul class="slick-dots"></ul>
 			</div>
-			</div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 			<script>
@@ -195,110 +180,8 @@
 					});
 				});
 			</script>
-			<div>
-				<div class="slick-slider slick-initialized" dir="ltr"><button type="button" data-role="none"
-						class="slick-arrow slick-prev" style="display:block"> Previous</button>
-					<div class="slick-list">
-						<div class="slick-track slick-track-slider" style="width:1500%;left:-100%">
-							<div data-index="-1" tabindex="-1" class="slick-slide slick-cloned" aria-hidden="true"
-								style="width:6.666666666666667%">
-								<div>
-									<div class="flex h-[500px] w-full justify-center" tabindex="-1"
-										style="width:100%;display:inline-block"><img
-											src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1304&amp;q=80"
-											alt="" class="mx-auto h-full object-cover shadow-xl" /></div>
-								</div>
-							</div>
-							<div data-index="0" class="slick-slide slick-active slick-current" tabindex="-1"
-								aria-hidden="false" style="outline:none;width:6.666666666666667%">
-								<div>
-									<div class="flex h-[500px] w-full justify-center" tabindex="-1"
-										style="width:100%;display:inline-block"><img
-											src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80"
-											alt="" class="mx-auto h-full object-cover shadow-xl" /></div>
-								</div>
-							</div>
-							<div data-index="1" class="slick-slide" tabindex="-1" aria-hidden="true"
-								style="outline:none;width:6.666666666666667%">
-								<div>
-									<div class="flex h-[500px] w-full justify-center" tabindex="-1"
-										style="width:100%;display:inline-block"><img
-											src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80"
-											alt="" class="mx-auto h-full object-cover shadow-xl" /></div>
-								</div>
-							</div>
 
 
-
-						</div>
-					</div><button type="button" data-role="none" class="slick-arrow slick-next" style="display:block">
-						Next</button>
-					<ul style="display:block" class="slick-dots">
-						<li class="slick-active"><button>1</button></li>
-						<li class=""><button>2</button></li>
-						<li class=""><button>3</button></li>
-						<li class=""><button>4</button></li>
-						<li class=""><button>5</button></li>
-						<li class=""><button>6</button></li>
-						<li class=""><button>7</button></li>
-					</ul>
-				</div>
-			</div>
-
-			<!--	<script>
-				$(document).ready(function () {
-					$('.slick-track-slider').slick({
-						dots: true,
-						infinite: true,
-						slidesToShow: 1, // Chỉ hiển thị một ảnh
-						slidesToScroll: 1,
-						speed: 500,
-						autoplay: true,
-						autoplaySpeed: 4000,
-						pauseOnHover: true,
-						arrows: true,
-					});
-				});
-			</script>-->
-			<!---->
-
-			<section class="ftco-section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<h2 class="heading-section mb-5 pb-md-4">Carousel #09</h2>
-						</div>
-						<div class="col-md-12">
-							<div class="hero featured-carousel owl-carousel">
-								<div class="item">
-									<div class="work">
-										<div class="img d-flex align-items-center justify-content-center"
-											style="background-image: url(/admin/images/logo.png);">
-
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="work">
-										<div class="img d-flex align-items-center justify-content-center"
-											style="background-image: url(images/slider-2.jpg);">
-
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="work">
-										<div class="img d-flex align-items-center justify-content-center"
-											style="background-image: url(images/slider-3.jpg);">
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
 			<main class="container mx-auto px-4 md:px-24">
 				<section class="my-10">
 					<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -324,9 +207,39 @@
 									</svg><span class="ml-2 border-b-2 uppercase">Xem thêm</span></a>
 							</div>
 							<div class="mt-5 md:mt-20">
-								<div class="slick-slider slick-initialized" dir="ltr"><button type="button"
+								<div class="slider slider2">
+									<div><img
+											src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1175&q=80"
+											alt=""></div>
+									<div><img
+											src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+											alt=""></div>
+									<div><img
+											src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1304&q=80"
+											alt=""></div>
+									<div><img
+											src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+											alt=""></div>
+								</div>
+								<ul class="slick-dots"></ul>
+								<script>
+									$(document).ready(function () {
+										$('.slider').slick({
+											dots: true,
+											infinite: true,
+											slidesToShow: 1,
+											slidesToScroll: 1,
+											speed: 500,
+											autoplay: true,
+											autoplaySpeed: 4000,
+											pauseOnHover: true,
+											arrows: true,
+										});
+									});
+								</script>
+								<!--<div class="slick-slider slick-initialized" dir="ltr"><button type="button"
 										data-role="none" class="slick-arrow slick-prev" style="display:block">
-										<!-- -->Previous</button>
+										 Previous</button>
 									<div class="slick-list">
 										<div class="slick-track"
 											style="width:566.6666666666667%;left:-100.00000000000001%">
@@ -367,132 +280,18 @@
 															alt="" class="px-2 h-full w-full object-cover" /></div>
 												</div>
 											</div>
-											<div data-index="1" class="slick-slide slick-active" tabindex="-1"
-												aria-hidden="false" style="outline:none;width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="2" class="slick-slide slick-active" tabindex="-1"
-												aria-hidden="false" style="outline:none;width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1515263487990-61b07816b324?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="3" class="slick-slide" tabindex="-1" aria-hidden="true"
-												style="outline:none;width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="4" class="slick-slide" tabindex="-1" aria-hidden="true"
-												style="outline:none;width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1175&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="5" class="slick-slide" tabindex="-1" aria-hidden="true"
-												style="outline:none;width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="6" class="slick-slide" tabindex="-1" aria-hidden="true"
-												style="outline:none;width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1304&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="7" tabindex="-1" class="slick-slide slick-cloned"
-												aria-hidden="true" style="width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=387&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="8" tabindex="-1" class="slick-slide slick-cloned"
-												aria-hidden="true" style="width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="9" tabindex="-1" class="slick-slide slick-cloned"
-												aria-hidden="true" style="width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1515263487990-61b07816b324?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="10" tabindex="-1" class="slick-slide slick-cloned"
-												aria-hidden="true" style="width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="11" tabindex="-1" class="slick-slide slick-cloned"
-												aria-hidden="true" style="width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1175&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="12" tabindex="-1" class="slick-slide slick-cloned"
-												aria-hidden="true" style="width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
-											<div data-index="13" tabindex="-1" class="slick-slide slick-cloned"
-												aria-hidden="true" style="width:5.882352941176471%">
-												<div>
-													<div class="flex h-[180px] w-full justify-center " tabindex="-1"
-														style="width:100%;display:inline-block"><img
-															src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1304&amp;q=80"
-															alt="" class="px-2 h-full w-full object-cover" /></div>
-												</div>
-											</div>
+										
+										
+										
 										</div>
 									</div><button type="button" data-role="none" class="slick-arrow slick-next"
-										style="display:block"> <!-- -->Next</button>
+										style="display:block">  Next</button>
 									<ul style="display:block" class="slick-dots">
 										<li class="slick-active"><button>1</button></li>
 										<li class=""><button>2</button></li>
 										<li class=""><button>3</button></li>
 									</ul>
-								</div>
+								</div>-->
 							</div>
 						</div>
 						<div class="hidden md:col-span-1 md:block ">
@@ -748,84 +547,9 @@
 											</div>
 										</div>
 									</div>
-									<div data-index="2" class="slick-slide slick-active" tabindex="-1"
-										aria-hidden="false" style="outline:none;width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="3" class="slick-slide slick-active" tabindex="-1"
-										aria-hidden="false" style="outline:none;width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="4" class="slick-slide" tabindex="-1" aria-hidden="true"
-										style="outline:none;width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="5" class="slick-slide" tabindex="-1" aria-hidden="true"
-										style="outline:none;width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="6" class="slick-slide" tabindex="-1" aria-hidden="true"
-										style="outline:none;width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="7" class="slick-slide" tabindex="-1" aria-hidden="true"
-										style="outline:none;width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
+
+
+
 									<div data-index="8" tabindex="-1" class="slick-slide slick-cloned"
 										aria-hidden="true" style="width:5%">
 										<div>
@@ -865,45 +589,7 @@
 											</div>
 										</div>
 									</div>
-									<div data-index="11" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="12" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="13" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
+
 									<div data-index="14" tabindex="-1" class="slick-slide slick-cloned"
 										aria-hidden="true" style="width:5%">
 										<div>
@@ -1151,71 +837,7 @@
 											</div>
 										</div>
 									</div>
-									<div data-index="11" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="12" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="13" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="14" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
-									<div data-index="15" tabindex="-1" class="slick-slide slick-cloned"
-										aria-hidden="true" style="width:5%">
-										<div>
-											<div
-												class="relative mx-2 h-full cursor-pointer transition-all hover:scale-105">
-												<img src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=773&amp;q=80"
-													alt="" class="h-full w-full object-cover" />
-												<div
-													class="absolute bottom-0 w-full bg-gray-800 p-2 text-center text-white opacity-80">
-													This is an Image</div>
-											</div>
-										</div>
-									</div>
+
 								</div>
 							</div><button type="button" data-role="none" class="slick-arrow slick-next"
 								style="display:block"> <!-- -->Next</button>
@@ -1521,7 +1143,23 @@
 				</section>
 			</main>
 			<div>
-				<div class="fb-customerchat" page_id="110681018196507"></div>
+				<div class="fb-customerchat" page_id="110681018196507">
+					<div class="contact-icons">
+    <!-- Icon Messenger -->
+    <a href="https://www.messenger.com/t/your_facebook_page" target="_blank">
+        <div class="icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Facebook_Messenger_logo_2019.svg" alt="Messenger">
+        </div>
+    </a>
+    
+    <!-- Icon Zalo -->
+    <a href="https://zalo.me/your_zalo_id" target="_blank">
+        <div class="icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Zalo_icon.png" alt="Zalo">
+        </div>
+    </a>
+</div>
+				</div>
 			</div>
 			<footer class="mt-10 md:mt-20">
 				<div
@@ -1601,21 +1239,22 @@
 	<!--
 		<script src="chunks/pages/_app-9cd1d19dd7237c4c.js" defer=""></script>
 		<script src="chunks/pages/index-1b23fcac0a6d0d84.js" defer=""></script>
-		-->
 	<script src="XUqUNv-CElHSo0bacI_C1/_buildManifest.js" defer=""></script>
 	<script src="XUqUNv-CElHSo0bacI_C1/_ssgManifest.js" defer=""></script>
 	<script src="XUqUNv-CElHSo0bacI_C1/_middlewareManifest.js" defer=""></script>
 
+		-->
 	<!--<script id="__NEXT_DATA__"
 			type="application/json">{"props":{"pageProps":{}},"page":"/","query":{},"buildId":"XUqUNv-CElHSo0bacI_C1","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}</script>
 		<script defer="" nomodule="" src="/web/chunks/polyfills-5cd94c89d3acac5f.js"></script>
 		<script th:src="@{/web/chunks/webpack-9b312e20a4e32339.js}" defer=""></script>
 		<script th:src="@{/web/chunks/1bfc9850-c4e590f455f97cbe.js}" defer=""></script>
-		<script th:src="@{/web/chunks/framework-5f4595e5518b5600.js}" defer=""></script>-->
+		<script th:src="@{/web/chunks/framework-5f4595e5518b5600.js}" defer=""></script>
 
 	<script th:src="@{/web/chunks/main-a054bbf31fb90f6a.js}" defer=""></script>
 	<script th:src="@{/web/chunks/526-adcd66347aa03047.js}" defer=""></script>
 	<script th:src="@{/web/chunks/829-fda5bb63651b928c.js}" defer=""></script>
+		-->
 </body>
 
 </html>

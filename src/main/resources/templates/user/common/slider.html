@@ -1,0 +1,32 @@
+<div th:fragment="slider" class="flex justify-center ">
+
+
+	<div class="slider  slick-list">
+		<div class="img d-flex align-items-center justify-content-center"><img
+				src="https://images.unsplash.com/photo-1516501312919-d0cb0b7b60b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1304&q=80"
+				alt="" style="outline:none;"></div>
+		<div class="img d-flex align-items-center justify-content-center"><img
+				src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+				alt="" style="outline:none;"></div>
+		<div class="img d-flex align-items-center justify-content-center"><img
+				src="https://images.unsplash.com/photo-1462396240927-52058a6a84ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+				alt="" style="outline:none;"></div>
+	</div>
+	<ul class="slick-dots"></ul>
+	<script>
+		$(document).ready(function () {
+			$('.slider').slick({
+				dots: true,
+				infinite: true,
+				slidesToShow: 1, // Chỉ hiển thị một ảnh
+				slidesToScroll: 1,
+				speed: 500,
+				autoplay: true,
+				autoplaySpeed: 2000,
+				pauseOnHover: true,
+				arrows: true,
+			});
+		});
+	</script>
+	
+</div>

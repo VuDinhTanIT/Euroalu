@@ -22,4 +22,15 @@ public class Index {
 		
 		return "index"; // Returns the HTML template name
 	}
+	@GetMapping("old")
+	public String showGuestListd(ModelMap model, HttpSession session) throws Exception {
+		
+		return "index_old"; // Returns the HTML template name
+	}
+	@GetMapping("gioi-thieu")
+	public String showGuestListd1(ModelMap model, HttpSession session) throws Exception {
+		
+		
+		return "index_old"; // Returns the HTML template name
+	}
 }
