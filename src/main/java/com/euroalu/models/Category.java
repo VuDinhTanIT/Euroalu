@@ -19,7 +19,7 @@ public class Category {
 
 	private String name;
 
-	private Long parentId;
+	private Category parentId;
 	private Timestamp createTime;
 
 	private Timestamp updateTime;

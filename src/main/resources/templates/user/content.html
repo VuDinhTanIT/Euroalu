@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<title th:text="${content.title}"></title>
+	<!--	
+		<script th:src="@{/web/js/jquery-3.6.0.min.js}" ></script>
+			<script th:src="@{/web/js/slider/slick-1.8.1.min.js}" ></script>
+-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<!--	
+-->
+
+	<style>
+		.slick-slider {
+			width: 100%;
+			margin: auto;
+		}
+
+		.slick-slide img {
+			height: 500px;
+			object-fit: cover;
+			width: 100%;
+			/* Đảm bảo ảnh chiếm toàn bộ chiều rộng */
+		}
+
+		.slider2 img {
+			width: 100%;
+			height: 400px;
+		}
+
+		.slick-arrow {
+			background-color: rgba(255, 255, 255, 0.8);
+			/* Nền cho nút */
+			border: none;
+			width: 40px;
+			/* Chiều rộng của nút */
+			height: 40px;
+			/* Chiều cao của nút */
+			border-radius: 50%;
+			/* Làm tròn nút */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 1;
+			/* Đảm bảo nút nằm trên ảnh */
+		}
+
+		.slick-prev {
+			left: 30px;
+			/* Khoảng cách từ bên trái */
+		}
+
+		.slick-next {
+			right: 50px;
+			/* Khoảng cách từ bên phải */
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<main th:fragment="content" class="container mx-auto px-4 md:px-24">
+		<section class="mt-10 mb-5 flex text-white md:mt-16">
+			<div class="flex w-full rounded bg-[#0060af] p-2"><small
+					class=" ml-2 text-sm font-semibold uppercase md:text-base" th:text="${content.title}"></small></div>
+		</section>
+		<div class="text-lg" th:utext="${content.content}">
+			
+			<p class=" font-semibold">Công ty cổ phần xây dựng EuroAlu được thành lập vào tháng 11 năm 2022</p>
+			<p class="my-4">EuroAlu được xây dựng bởi đội ngũ quản lý tận tụy, sáng tạo, đội ngũ công nhân có tay nghề
+				cao, và dây chuyền sản xuất được ứng dụng công nghệ sản xuất tiên tiến từ Italy, Phần Lan, Hàn Quốc ...
+				Cùng với các nguyên tắc hoạt động cơ bản của công ty: An toàn, Nhanh chóng, Áp dụng tiêu chuẩn chất
+				lượng có uy tín trên thế giới vào sản xuất ...</p>
+			<p class="my-4">Nên sản phẩm của công ty chúng tôi đáp ứng được hầu hết nhu cầu thị hiếu của khách hàng
+				trong và ngoài nước. Ngoài ra, hệ thống quản lý chất lượng của công ty chúng tôi phù hợp tiêu chuẩn ISO
+				9001:2008, chúng tôi tin tưởng rằng có thể cung cấp đến Quý khách hàng các sản phẩm có chất lượng tốt
+				nhất và tối đa hóa sự thỏa mãn của Quý khách hàng.</p>
+			<p>Sản phẩm chính của Công ty bao gồm: Mặt dựng kính - Cửa nhôm - Cửa nhựa lõi thép - Cửa cuốn.</p>
+		</div>
+
+	</main>
+	<!--Thoong tin lien he-->
+
+	<div th:replace="~{user/common/footer :: footer}"></div>
+
+</body>
+
+</html>

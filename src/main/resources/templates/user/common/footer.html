@@ -1,34 +1,68 @@
-<footer th:fragment="footer"  class="mt-10 md:mt-20">
-	<div class="container mt-5">
-		
-        <div class="row">
-            <div class="md-6 col-md-6">
-                <h3>Đăng ký ngay để nhận tư vấn từ Euroalu!</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Họ và tên *</label>
-                        <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Số điện thoại *</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="Nhập số điện thoại" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" class="form-control" id="email" placeholder="Nhập email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Lời nhắn tới Euroalu</label>
-                        <textarea class="form-control" id="message" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary bg-[#0060af]">Gửi</button>
-                </form>
-            </div>
-            <div class="md-6 col-md-6">
-                <img th:src="@{/web/img/tu-van.jpg}" alt="Tư vấn" class="img-fluid rounded">
-            </div>
-        </div>
-    </div>
+<footer th:fragment="footer" class="mt-10 md:mt-20">
+	<div class="container mx-auto px-4 md:px-24">
+		<section class="flex flex-col items-center md:flex-row md:space-x-6">
+			<div class="w-full md:w-1/2">
+				<div class="mb-4 space-y-2">
+					<div class="text-[17px] font-bold text-primary md:text-2xl">Liên hệ</div>
+				</div>
+				<div class="mt-2">
+					<form action="#" method="POST">
+						<div class="overflow-hidden shadow">
+							<div class="space-y-1 bg-white px-4 py-5">
+								<div class="grid grid-rows-1 md:grid-cols-12 ">
+									<div class="col-span-2 flex items-center"><label
+											class="block text-sm font-medium text-gray-700">Họ và tên: <span
+												class="text-[#ff0000]">*</span></label></div>
+									<div class="col-span-10"><input type="text" name="first_name" id="first_name"
+											class="mt-1 block w-full rounded-md border border-gray-300 p-1.5 shadow-sm ">
+									</div>
+								</div>
+								<div class="grid grid-rows-1 md:grid-cols-12 ">
+									<div class="col-span-2 flex items-center"><label
+											class="block text-sm font-medium text-gray-700">Địa chỉ:<span
+												class="text-[#ff0000]">*</span></label></div>
+									<div class="col-span-10"><input type="text" name="first_name" id="first_name"
+											class="mt-1 block w-full rounded-md border border-gray-300 p-1.5 shadow-sm ">
+									</div>
+								</div>
+								<div class="grid grid-rows-1 md:grid-cols-12 ">
+									<div class="col-span-2 flex items-center"><label
+											class="block text-sm font-medium text-gray-700">Điện thoại:<span
+												class="text-[#ff0000]">*</span></label></div>
+									<div class="col-span-10"><input type="text" name="first_name" id="first_name"
+											class="mt-1 block w-full rounded-md border border-gray-300 p-1.5 shadow-sm ">
+									</div>
+								</div>
+								<div class="grid grid-rows-1 md:grid-cols-12">
+									<div class="col-span-2 flex items-center"><label
+											class="block text-sm font-medium text-gray-700">Email:<span
+												class="text-[#ff0000]">*</span></label></div>
+									<div class="col-span-10"><input type="email" name="email_address" id="email_address"
+											class="mt-1 block w-full rounded-md border border-gray-300 p-1.5 shadow-sm ">
+									</div>
+								</div>
+								
+								<div class="grid grid-rows-1 pt-2 md:grid-cols-12">
+									<div class="col-span-2 "><label class="block text-sm font-medium text-gray-700">Nội
+											dung:<span class="text-[#ff0000]">*</span></label></div>
+									<div class="col-span-10"><textarea id="message" rows="4"
+											class=" mt-1 block w-full rounded-lg border border-gray-300 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+											placeholder=""></textarea></div>
+								</div>
+							</div>
+							<div class="bg-gray-50 px-4 py-3 "><button type="submit"
+									class="hover:c80011 inline-flex justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none ">Gửi</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="mt-8 w-full md:mt-0 md:w-1/2">
+			<img th:src="@{/web/img/tu-van.jpg}" alt="Tư vấn" class="img-fluid rounded">
+			</div>
+		</section>
+
+	</div>
 	<div class=" flex h-1/2 flex-col items-start justify-between bg-black p-6 text-white md:h-1/4 md:p-24 lg:flex-row">
 		<div class="w-full md:w-1/2">
 			<div class=" mb-2 flex flex-col items-start justify-center ">
@@ -37,7 +71,7 @@
 				<div>Địa chỉ: 55 Đường Võ An Ninh, Phường Hoà Xuân, Quận Cẩm Lệ, TP. Đà Nẵng</div>
 				<div>Email: kinhdoanh@euroalu.vn</div>
 				<div>Hotline: 0988016877</div>
-					
+
 			</div>
 			<div class="flex">
 				<div class="mr-4 text-sm uppercase md:text-lg">Mạng xã hội:</div>
@@ -84,18 +118,18 @@
 			</div>
 		</div>
 		<div class="w-full md:w-1/2">
-    <div class="mb-2 text-sm uppercase md:text-lg">Bản đồ:</div>
-    <div class="w-full">
-        <div class="mapouter">
-            <div class="gmap_canvas">
-                <iframe width="100%" height="300" id="gmap_canvas"
-                    src="https://maps.google.com/maps?q=55%20V%C3%B5%20An%20Ninh,%20Ho%C3%A0%20Xu%C3%A2n,%20C%C3%A1m%20L%E1%BB%87,%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000,%20Vietnam&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                    frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
-                <a href="https://www.whatismyip-address.com/divi-discount/"></a>
-            </div>
-        </div>
-    </div>
-</div>
+			<div class="mb-2 text-sm uppercase md:text-lg">Bản đồ:</div>
+			<div class="w-full">
+				<div class="mapouter">
+					<div class="gmap_canvas">
+						<iframe width="100%" height="300" id="gmap_canvas"
+							src="https://maps.google.com/maps?q=55%20V%C3%B5%20An%20Ninh,%20Ho%C3%A0%20Xu%C3%A2n,%20C%C3%A1m%20L%E1%BB%87,%20%C4%90%C3%A0%20N%E1%BA%B5ng%20550000,%20Vietnam&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+							frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+						<a href="https://www.whatismyip-address.com/divi-discount/"></a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="flex flex-col items-center justify-center bg-[#0060af] p-5 text-center text-sm text-white md:text-lg">
 		<h1 class=" font-semibold ">© 2021-2022 by 7huh7. All rights reserved</h1>

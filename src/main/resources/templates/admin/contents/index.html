@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Website quản lý</title>
+	<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+	<!--	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+-->
+	<link rel="icon" th:href="@{/web/assets/icons/logo.jpg}" type="image/x-icon" />
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<!-- Fonts and icons -->
+	<script th:src="@{/Admin/assets/js/plugin/webfont/webfont.min.js}"></script>
+	<script>
+		WebFont.load({
+			google: {families: ["Public Sans:300,400,500,600,700"]},
+			custom: {
+				families: [
+					"Font Awesome 5 Solid",
+					"Font Awesome 5 Regular",
+					"Font Awesome 5 Brands",
+					"simple-line-icons",
+				],
+				urls: ["/Admin/assets/css/fonts.min.css"],
+			},
+			active: function () {
+				sessionStorage.fonts = true;
+			},
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" th:href="@{/Admin/assets/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/Admin/assets/css/plugins.min.css}" />
+	<link rel="stylesheet" th:href="@{/Admin/assets/css/kaiadmin.min.css}" />
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" th:href="@{/Admin/assets/css/demo.css}" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- Sidebar -->
+		<div th:insert="~{admin/fragments/sidebar :: block-sidebar}" id="sidebar"></div>
+
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<!-- Main Header -->
+			<div th:insert="~{admin/fragments/header :: block-header}" id="sidebar"></div>
+			<!-- End Header -->
+
+
+			<div class="container">
+				<div class="page-inner">
+					<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+
+						<!--              <div class="ms-md-auto py-2 py-md-0">-->
+						<!--                <a href="#" class="btn btn-label-info btn-round me-2">Manage</a>-->
+						<!--                <a href="#" class="btn btn-primary btn-round">Add Customer</a>-->
+						<!--              </div>-->
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card card-round">
+								<div class="card-header">
+									<div class="card-head-row">
+										<div class="card-title">Quản lý nội dung/bài đăng</div>
+										<div class="card-tools">
+											<a th:href="@{/admin/quan-ly-noi-dung/them}"
+												class="btn btn-label-success btn-round btn-sm me-2">
+												<span class="btn-label">
+													<i class="fa fa-pencil"></i>
+												</span>
+												Thêm
+											</a>
+											<a href="#" class="btn btn-label-info btn-round btn-sm">
+												<span class="btn-label">
+													<i class="fa fa-print"></i>
+												</span>
+
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="card">
+
+										<div class="card-body">
+											<div class="table-responsive">
+												<table id="multi-filter-select"
+													class="display table table-striped table-hover">
+													<thead>
+														<tr>
+															<th>STT</th>
+															<th>Tiêu đề</th>
+															<th>Đường dẫn</th>
+															<th>Nội dung</th>
+															<th>Ảnh</th>
+															<th>Trạng thái</th>
+															<th>Thao tác</th>
+														</tr>
+													</thead>
+													<tfoot>
+														<tr>
+															<th>STT</th>
+															<th>Tiêu đề</th>
+															<th>Đường dẫn</th>
+															<th>Nội dung</th>
+															<th>Ảnh</th>
+															<th>Trạng thái</th>
+															<th>Thao tác</th>
+														</tr>
+													</tfoot>
+													<tbody id="contents">
+
+
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--
+			
+            -->
+					</div>
+
+
+				</div>
+			</div>
+
+			<footer th:insert="~{admin/fragments/sidebar :: block-sidebar}" id="sidebar"></footer>
+		</div>
+		<!-- End Custom template -->
+		<footer th:insert="~{admin/fragments/footer :: block-footer}" id="sidebar"></footer>
+
+	</div>
+	<script type="module">
+		import {BASE_URL, getTokenFromCookie} from "/api-connect/api-config.js";
+
+		$(document).ready(function () {
+			$.ajax({
+				url: `${BASE_URL}/admin/noi-dung`, // Thay thế với URL của API
+				method: 'GET',
+				dataType: 'json',
+				success: function (data) {
+					const tbody = $('#contents');
+					tbody.empty(); // Xóa nội dung hiện tại
+
+					data.forEach(content => {
+						const maxLength = 100; // Số ký tự tối đa
+						let shortContent = content.content.length > maxLength ?
+							content.content.substring(0, maxLength) + '...' :
+							content.content;
+						const row = `
+				                <tr>
+				                    <td>${content.id}</td>
+				                    <td>${content.title}</td>
+				                    <td><a href="${content.path}" target="_blank">${content.path}</a></td>
+				                    <td>${shortContent}</td>
+				                    <td><img src="${content.image}" alt="${content.title}" style="width: 100px; height: auto;"></td>
+				                    <td>${content.status ? 'Kích hoạt' : 'Ngừng hoạt động'}</td>
+				                    <td>
+				                        <button class="btn btn-edit" data-id="${content.id}">Sửa</button>
+				                        <button class="btn btn-delete" data-id="${content.id}">Xóa</button>
+				                    </td>
+				                </tr>
+				            `;
+						tbody.append(row); // Thêm hàng vào bảng
+					});
+
+					$("#basic-datatables").DataTable({});
+
+					$("#multi-filter-select").DataTable({
+						pageLength: 5,
+						initComplete: function () {
+							this.api()
+								.columns()
+								.every(function () {
+									var column = this;
+									var select = $(
+										'<select class="form-select"><option value=""></option></select>'
+									)
+										.appendTo($(column.footer()).empty())
+										.on("change", function () {
+											var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+											column
+												.search(val ? "^" + val + "$" : "", true, false)
+												.draw();
+										});
+
+									column
+										.data()
+										.unique()
+										.sort()
+										.each(function (d, j) {
+											select.append(
+												'<option value="' + d + '">' + d + "</option>"
+											);
+										});
+								});
+						},
+					});
+
+					// Add Row
+					$("#add-row").DataTable({
+						pageLength: 5,
+					});
+
+					var action =
+						'<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+					$("#addRowButton").click(function () {
+						$("#add-row")
+							.dataTable()
+							.fnAddData([
+								$("#addName").val(),
+								$("#addPosition").val(),
+								$("#addOffice").val(),
+								action,
+							]);
+						$("#addRowModal").modal("hide");
+					});
+				},
+				error: function (xhr, status, error) {
+					console.error('Error fetching data: ', error);
+					// Có thể hiển thị thông báo lỗi cho người dùng ở đây
+				}
+
+			});
+
+		});
+
+	</script>
+</body>
+
+</html>
