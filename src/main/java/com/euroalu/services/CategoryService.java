@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.euroalu.models.Category;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vku.Utils.Utils;
+import com.euroalu.Utils.Utils;
 
 
 
@@ -50,4 +50,5 @@ public class CategoryService {
 		ResponseEntity<Category> response = apiService.get(api, Category.class);
 		return response != null ? response.getBody() : null;
 	}
+
 }

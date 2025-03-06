@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.euroalu.Utils.Utils;
 import com.euroalu.models.Content;
 import com.euroalu.models.Product;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vku.Utils.Utils;
 
 import jakarta.servlet.http.HttpServletRequest;
 
