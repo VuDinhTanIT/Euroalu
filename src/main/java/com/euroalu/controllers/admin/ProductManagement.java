@@ -82,7 +82,7 @@ public class ProductManagement {
 			return "redirect:/admin/quan-ly-san-pham/them"; // Chuyển hướng đến trang khác hoặc thông báo lỗi
 		}
 
-		return "redirect:/admin/quan-ly-danh-muc";
+		return "redirect:/admin/quan-ly-san-pham";
 	}
 
 	@PostMapping("/{id}")
@@ -99,6 +99,6 @@ public class ProductManagement {
 			return "redirect:/admin/quan-ly-san-pham/" + id; // Chuyển hướng đến trang khác hoặc thông báo lỗi
 		}
 
-		return "redirect:/admin/quan-ly-danh-muc";
+		return "redirect:/admin/quan-ly-san-pham";
 	}
 }

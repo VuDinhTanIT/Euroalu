@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
         } else if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
             errorMessage = "Not Found: " + e.getResponseBodyAsString();
         } else {
-            errorMessage = "Unexpected error: " + e.getStatusCode();
+            errorMessage = "Unexpected error: " + e.getLocalizedMessage();
         }
 
         model.addAttribute("errorMessage", errorMessage);
@@ -28,7 +28,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public String handleHttpClientError(Exception e, Model model) {
     	e.getCause();
-        model.addAttribute("errorMessage", e.getMessage());
+    	System.err.println("lỗi " );
+    	e.printStackTrace();
+        model.addAttribute("errorMessage", e.getLocalizedMessage());
         return "error"; // Tên view (HTML) bạn muốn trả về
     }
 }

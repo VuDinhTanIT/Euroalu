@@ -99,7 +99,6 @@
 															<th>Đường dẫn</th>
 															<th>Nội dung</th>
 															<th>Ảnh</th>
-															<th>Trạng thái</th>
 															<th>Thao tác</th>
 														</tr>
 													</thead>
@@ -110,7 +109,6 @@
 															<th>Đường dẫn</th>
 															<th>Nội dung</th>
 															<th>Ảnh</th>
-															<th>Trạng thái</th>
 															<th>Thao tác</th>
 														</tr>
 													</tfoot>
@@ -161,14 +159,17 @@
 				                <tr>
 				                    <td>${content.id}</td>
 				                    <td>${content.title}</td>
-				                    <td><a href="${content.path}" target="_blank">${content.path}</a></td>
+				                    <td><a href="/us/${content.path}" target="_blank">${content.path}</a></td>
 				                    <td>${shortContent}</td>
-				                    <td><img src="${content.image}" alt="${content.title}" style="width: 100px; height: auto;"></td>
-				                    <td>${content.status ? 'Kích hoạt' : 'Ngừng hoạt động'}</td>
+				                    <td><img th:src="${content.image != null && content.image.startsWith('http') ? content.image : '/uploads/' + content.image}" style="width: 100px; height: auto;"></td>
 				                    <td>
-				                        <button class="btn btn-edit" data-id="${content.id}">Sửa</button>
-				                        <button class="btn btn-delete" data-id="${content.id}">Xóa</button>
-				                    </td>
+									    <a href="quan-ly-noi-dung/${content.id}" class="btn btn-edit btn-success" data-id="${content.id}">
+									        <i class="fas fa-edit"></i> Sửa
+									    </a>
+									    <a href="quan-ly-noi-dung/xoa/${content.id}" class="btn btn-delete btn-danger" data-id="${content.id}">
+									        <i class="fas fa-trash-alt"></i> Xóa
+									    </a>
+									</td>
 				                </tr>
 				            `;
 						tbody.append(row); // Thêm hàng vào bảng

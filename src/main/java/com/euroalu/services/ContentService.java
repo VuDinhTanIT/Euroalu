@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.euroalu.models.Content;
+import com.euroalu.models.Product;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vku.Utils.Utils;
@@ -48,46 +49,20 @@ public class ContentService {
 
 		if (response != null && response.getStatusCode() == HttpStatus.OK) {
 			return response.getBody();
-		} else {
-
-			return null;
 		}
+		return null;
 	}
 
 	public Content saveContent(Content content, MultipartFile file, HttpServletRequest request) {
-		String newFileName = null;
-		if (!file.isEmpty()) {
-			try {
-//					newFileName = file.getOriginalFilename() + "_" + content.getCategory().getId();
-				newFileName = content.getTitle() + ".jpg";
-				String applicationPath = request.getServletContext().getRealPath("");
-				String uploadFilePath = applicationPath + File.separator + Utils.UPLOAD_DIR;
-				File uploadFolder = new File(uploadFilePath);
-				if (!uploadFolder.exists()) {
-					uploadFolder.mkdir();
-				}
-
-				File imageFile = new File(uploadFilePath + File.separator + newFileName);
-				Files.copy(file.getInputStream(), imageFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-				// Cập nhật đường dẫn tệp tin trong đối tượng content
-				content.setImage(newFileName); // Giả sử bạn có thuộc tính này trong Content
-
-			} catch (Exception e) {
-				System.err.println("Lỗi : " + e.getMessage());
-				e.printStackTrace();
-				// Xử lý ngoại lệ nếu có lỗi xảy ra
-//	                return "fail"; // Hoặc bạn có thể ném một ngoại lệ tùy chỉnh
-			}
-		}
-		// return newFileName; // Hoặc giá trị khác để biểu thị thành công
-		ResponseEntity<Content> response = apiService.post(apiURL, content, Content.class);
+		String newFileName = handleFileUpload(content, file, request);
+		if (newFileName != null)
+			content.setImage(newFileName);
+		ResponseEntity<Content> response = apiService.post(apiURL , content, Content.class);
 
 		if (response != null && response.getStatusCode() == HttpStatus.CREATED) {
-			System.out.println("ok " + response.getBody());
 			return response.getBody();
 		}
-		System.out.println(response);
+//		System.out.println(response);
 		return null;
 
 	}
@@ -104,4 +79,48 @@ public class ContentService {
 		}
 	}
 
+	public Content updateContent(Content content, MultipartFile file, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		String newFileName = handleFileUpload(content, file, request);
+		if (newFileName != null)
+			content.setImage(newFileName);
+		ResponseEntity<Content> response = apiService.put(apiURL + "/"+ content.getId(), content, Content.class);
+
+		if (response != null && response.getStatusCode() == HttpStatus.CREATED) {
+			return response.getBody();
+		}
+//		System.out.println(response);
+		return null;
+	}
+
+	private String handleFileUpload(Content content, MultipartFile file, HttpServletRequest request) {
+		if (file != null && !file.isEmpty()) {
+			try {
+				String newFileName = content.getPath() + ".jpg";
+				String applicationPath = request.getServletContext().getRealPath("");
+				String uploadFilePath = applicationPath + File.separator + Utils.UPLOAD_DIR;
+				File uploadFolder = new File(uploadFilePath);
+
+				if (!uploadFolder.exists()) {
+					uploadFolder.mkdir();
+				}
+
+				// Xóa tệp cũ nếu tên tệp mới khác tên tệp cũ
+				if (content.getImage() != null && !content.getImage().equals(newFileName)) {
+					File oldImageFile = new File(uploadFilePath + File.separator + content.getImage());
+					if (oldImageFile.exists()) {
+						oldImageFile.delete(); // Xóa tệp cũ
+					}
+				}
+				Files.copy(file.getInputStream(), new File(uploadFilePath + File.separator + newFileName).toPath(),
+						StandardCopyOption.REPLACE_EXISTING);
+				return newFileName; // Trả về tên tệp mới
+			} catch (Exception e) {
+				System.err.println("Lỗi : " + e.getMessage());
+				e.printStackTrace();
+				// Xử lý ngoại lệ nếu có lỗi xảy ra
+			}
+		}
+		return null; // Nếu không có tệp tin mới, trả về null
+	}
 }
