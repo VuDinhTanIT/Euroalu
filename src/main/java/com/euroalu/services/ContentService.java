@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.euroalu.models.Content;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vku.Utils.Utils;
 
@@ -32,7 +30,7 @@ public class ContentService {
 		this.apiService = new ApiService();
 	}
 
-	public List<Content> getAllContents() throws JsonMappingException, JsonProcessingException {
+	public List<Content> getAllContents() throws Exception {
 		ResponseEntity<String> response = apiService.get(apiURL, String.class);
 		if (response != null && response.getStatusCode().is2xxSuccessful()) {
 			String json = response.getBody();
@@ -44,7 +42,7 @@ public class ContentService {
 
 	}
 
-	public Content getContentById(int id) {
+	public Content getContentById(int id) throws Exception {
 		String api = apiURL + "/" + id;
 		ResponseEntity<Content> response = apiService.get(api, Content.class);
 
@@ -94,7 +92,7 @@ public class ContentService {
 
 	}
 
-	public Content getByPath(String path) {
+	public Content getByPath(String path) throws Exception {
 		String api = apiURL + "/blog/" + path;
 		ResponseEntity<Content> response = apiService.get(api, Content.class);
 

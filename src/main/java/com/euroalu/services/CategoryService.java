@@ -1,30 +1,16 @@
 package com.euroalu.services;
 
-import java.net.URI;
 import java.util.List;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
 
 import com.euroalu.models.Category;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vku.Utils.Utils;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import java.util.List;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 @Service
 public class CategoryService {
@@ -59,7 +45,7 @@ public class CategoryService {
 		return response;
 	}
 
-	public Category getCategoryById(int id) {
+	public Category getCategoryById(int id) throws Exception {
 		String api = apiURL + "/" + id;
 		ResponseEntity<Category> response = apiService.get(api, Category.class);
 		return response != null ? response.getBody() : null;

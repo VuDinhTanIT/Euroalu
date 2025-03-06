@@ -26,7 +26,8 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ProductManagement {
 	@Autowired
 	private ProductService productService;
-	@Autowired CategoryService categoryService;
+	@Autowired
+	CategoryService categoryService;
 	Message message;
 
 	@GetMapping
@@ -39,19 +40,21 @@ public class ProductManagement {
 		}
 		return "admin/products/index";
 	}
+
 	@GetMapping("/{id}")
 	public String getByIdProduct(ModelMap model, @PathVariable int id) throws Exception {
-		Product products = productService.getProductById(id);
-		System.out.println("ProductManager "+ products);
-		model.addAttribute("categories", products);
+		Product product = productService.getProductById(id);
+		List<Category> categories = categoryService.getAllCategorys();
+		model.addAttribute("categories", categories);
+		model.addAttribute("product", product);
 
 		if (message != null) {
 			model.addAttribute("message", message);
 			message = null;
 		}
-		return "admin/categories/index";
+		return "admin/products/edit";
 	}
-	
+
 	@GetMapping("/them")
 	public String getByIdProduct(ModelMap model) throws Exception {
 
@@ -64,20 +67,38 @@ public class ProductManagement {
 		}
 		return "admin/products/add";
 	}
+
 	@PostMapping
 	public String postProduct(@ModelAttribute("product") Product product,
 //			@PathVariable("idStudent") String studentId,
 			HttpServletRequest request, @RequestParam("file") MultipartFile file) {
-		  Product productCreated = productService.saveProduct(product, file, request);
-		    
-		    if (productCreated == null) {
-		        // Xử lý lỗi
-		        message = new Message();
-		        message.setStatus("fail");
-		        message.setMessage("Thêm sản phẩm không thành công! Vui lòng kiểm tra lại file");
-		        return "redirect:/admin/quan-ly-san-pham/them"; // Chuyển hướng đến trang khác hoặc thông báo lỗi
-		    }
+		Product productCreated = productService.saveProduct(product, file, request);
 
-		    return "redirect:/admin/quan-ly-danh-muc";					
+		if (productCreated == null) {
+			// Xử lý lỗi
+			message = new Message();
+			message.setStatus("fail");
+			message.setMessage("Thêm sản phẩm không thành công! Vui lòng kiểm tra lại file");
+			return "redirect:/admin/quan-ly-san-pham/them"; // Chuyển hướng đến trang khác hoặc thông báo lỗi
+		}
+
+		return "redirect:/admin/quan-ly-danh-muc";
+	}
+
+	@PostMapping("/{id}")
+	public String updateProduct(@ModelAttribute("product") Product product, @PathVariable("id") Long id,
+			HttpServletRequest request, @RequestParam("file") MultipartFile file) {
+		product.setId(id);
+		boolean b = productService.updateProduct(product, file, request);
+
+		if (!b) {
+			// Xử lý lỗi
+			message = new Message();
+			message.setStatus("fail");
+			message.setMessage("Thêm sản phẩm không thành công! Vui lòng kiểm tra lại file");
+			return "redirect:/admin/quan-ly-san-pham/" + id; // Chuyển hướng đến trang khác hoặc thông báo lỗi
+		}
+
+		return "redirect:/admin/quan-ly-danh-muc";
 	}
 }

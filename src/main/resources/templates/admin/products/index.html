@@ -5,8 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Website quản lý</title>
 	<meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
-<!--	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
--->	<link rel="icon" th:href="@{/web/assets/icons/logo.jpg}" type="image/x-icon" />
+	<!--	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+-->
+	<link rel="icon" th:href="@{/web/assets/icons/logo.jpg}" type="image/x-icon" />
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<!-- Fonts and icons -->
@@ -137,66 +138,6 @@
 		</div>
 
 		<!-- Custom template | don't include it in your project! -->
-		<div class="custom-template">
-			<div class="title">Settings</div>
-			<div class="custom-content">
-				<div class="switcher">
-					<div class="switch-block">
-						<h4>Logo Header</h4>
-						<div class="btnSwitch">
-							<button type="button" class="selected changeLogoHeaderColor" data-color="dark"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="blue"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="green"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="red"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-							<br />
-							<button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
-							<button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Navbar Header</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeTopBarColor" data-color="dark"></button>
-							<button type="button" class="changeTopBarColor" data-color="blue"></button>
-							<button type="button" class="changeTopBarColor" data-color="purple"></button>
-							<button type="button" class="changeTopBarColor" data-color="light-blue"></button>
-							<button type="button" class="changeTopBarColor" data-color="green"></button>
-							<button type="button" class="changeTopBarColor" data-color="orange"></button>
-							<button type="button" class="changeTopBarColor" data-color="red"></button>
-							<button type="button" class="selected changeTopBarColor" data-color="white"></button>
-							<br />
-							<button type="button" class="changeTopBarColor" data-color="dark2"></button>
-							<button type="button" class="changeTopBarColor" data-color="blue2"></button>
-							<button type="button" class="changeTopBarColor" data-color="purple2"></button>
-							<button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
-							<button type="button" class="changeTopBarColor" data-color="green2"></button>
-							<button type="button" class="changeTopBarColor" data-color="orange2"></button>
-							<button type="button" class="changeTopBarColor" data-color="red2"></button>
-						</div>
-					</div>
-					<div class="switch-block">
-						<h4>Sidebar</h4>
-						<div class="btnSwitch">
-							<button type="button" class="changeSideBarColor" data-color="white"></button>
-							<button type="button" class="selected changeSideBarColor" data-color="dark"></button>
-							<button type="button" class="changeSideBarColor" data-color="dark2"></button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--        <div class="custom-toggle">-->
-			<!--          <i class="icon-settings"></i>-->
-			<!--        </div>-->
-		</div>
 		<!-- End Custom template -->
 		<footer th:insert="~{admin/fragments/footer :: block-footer}" id="sidebar"></footer>
 
@@ -216,10 +157,11 @@
 					// Lặp qua dữ liệu và tạo hàng cho bảng
 					data.forEach(product => {
 
-						const parentCategory = product.category.parentId ? ` (${product.category.parentId.name})` : '';
+						const parentCategory = product.category && product.category.parentId
+							? ` (${product.category.parentId.name})`
+							: '';
 						const categoryName = product.category.name + parentCategory;
-
-						 tableContent += `
+						tableContent += `
 				                <tr>
 				                    <td>${product.id}</td>
 				                    <td>${product.name}</td>
@@ -228,14 +170,17 @@
 				                    <td>${product.productType}</td>
 				                    <td>${product.status ? 'Kích hoạt' : 'Ngừng hoạt động'}</td>
 				                    <td>
-				                        <button class="btn btn-edit" data-id="${product.id}">Sửa</button>
-				                        <button class="btn btn-delete" data-id="${product.id}">Xóa</button>
-				                    </td>
+									    <a href="quan-ly-san-pham/${product.id}" class="btn btn-edit btn-success" data-id="${product.id}">
+									        <i class="fas fa-edit"></i> Sửa
+									    </a>
+									    <a href="quan-ly-san-pham/xoa/${product.id}" class="btn btn-delete btn-danger" data-id="${product.id}">
+									        <i class="fas fa-trash-alt"></i> Xóa
+									    </a>
+									</td>
 				                </tr>
 				            `;
-				            
+
 					});
-					console.log(tableContent)
 					// Chèn nội dung vào tbody của bảng
 					$('#products').html(tableContent);
 					$("#basic-datatables").DataTable({});
